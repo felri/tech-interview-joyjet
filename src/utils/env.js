@@ -1,0 +1,1 @@
+export const URL = 'https://cdn.joyjet.com/tech-interview/mobile-test-one.json'
