@@ -6,7 +6,7 @@ import { useSafeArea } from "react-native-safe-area-context";
 import menuIcon from "src/assets/ic_menu.png";
 
 export interface Props {
-  navigation: object;
+  navigation: any;
   title: string;
 }
 
