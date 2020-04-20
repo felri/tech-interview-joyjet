@@ -17,6 +17,7 @@ import { ItemScreen } from "./src/screens/Item";
 import { FavoriteScreen } from "./src/screens/Favorite";
 import { useFonts } from "@use-expo/font";
 import { AppLoading } from "expo";
+import CustomDrawer from "./src/components/CustomDrawer";
 import thunk from "redux-thunk";
 
 const persistConfig = {
@@ -63,7 +64,11 @@ export default function App() {
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
             <NavigationContainer>
-              <Drawer.Navigator initialRouteName="Home" drawerPosition="right">
+              <Drawer.Navigator
+                initialRouteName="Home"
+                drawerPosition="right"
+                drawerContent={(props) => <CustomDrawer {...props} />}
+              >
                 <Drawer.Screen name="Home" component={HomeStack} />
                 <Drawer.Screen name="Favorites" component={FavoriteStack} />
               </Drawer.Navigator>
