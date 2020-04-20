@@ -12,10 +12,14 @@ interface Props {
   navigation: object;
 }
 
-const Loading: React.FC<{}> = () => <ActivityIndicator />;
+const Loading: React.FC<{}> = () => (
+  <View style={styles.containerLoading}>
+    <ActivityIndicator size="large" />
+  </View>
+);
 
 const Error: React.FC<{}> = () => (
-  <View>
+  <View style={styles.containerLoading}>
     <Text>Error</Text>
   </View>
 );
@@ -36,7 +40,10 @@ export const HomeScreen: React.FC<Props> = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <HeaderBar title="Digital Space" navigation={navigation} />
-      <ScrollView style={styles.containerScrollView}>
+      <ScrollView
+        style={styles.containerScrollView}
+        contentContainerStyle={{ flexGrow: 1 }}
+      >
         {loading ? (
           <Loading />
         ) : items.length ? (

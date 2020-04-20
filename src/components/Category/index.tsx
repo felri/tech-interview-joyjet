@@ -10,27 +10,21 @@ interface Props {
   navigation: any;
 }
 
-export const Category: React.FC<Props> = ({ item, navigation }) => {
-  const handleClick = (i) => {
-    navigation.navigate("ItemScreen", { item: i, category: item.category });
-  };
-
-  return (
-    <View style={styles.container}>
-      <View style={styles.containerTextCategory}>
-        <Text style={styles.textCategory} fontWeight="bold">
-          {item.category}
-        </Text>
-      </View>
-      {item.items.length > 0 &&
-        item.items.map((item: IItems, index: number) => (
-          <Item
-            key={index}
-            item={item}
-            navigation={navigation}
-            handleClick={() => handleClick(item)}
-          />
-        ))}
+export const Category: React.FC<Props> = ({ item, navigation }) => (
+  <View style={styles.container}>
+    <View style={styles.containerTextCategory}>
+      <Text style={styles.textCategory} fontWeight="bold">
+        {item.category}
+      </Text>
     </View>
-  );
-};
+    {item.items.length > 0 &&
+      item.items.map((i: IItems, index: number) => (
+        <Item
+          key={index}
+          item={i}
+          category={item.category}
+          navigation={navigation}
+        />
+      ))}
+  </View>
+);

@@ -10,5 +10,10 @@ export default StyleSheet.create({
   },
   containerScrollView: {
     marginTop: 38
+  },
+  containerLoading: {
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });

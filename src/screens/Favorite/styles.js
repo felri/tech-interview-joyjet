@@ -6,5 +6,14 @@ export default StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+
   },
+  containerScrollView: {
+    marginTop: 38
+  },
+  containerFavorites: {
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
 });

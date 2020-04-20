@@ -68,10 +68,10 @@ export const ItemScreen: React.FC<Props> = ({ route, navigation }) => {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
+    //check if item is saved inside favorites redux
     const result: number = favorites.list.findIndex(
       (f) => f.item.title === item.title && f.category === category
     );
-    console.log(result);
     setFavorite(result !== -1);
   }, [favorites]);
 
