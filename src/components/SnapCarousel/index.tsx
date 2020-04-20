@@ -22,10 +22,13 @@ export const SnapCarousel: React.FC<Props> = ({ galery }) => {
     const httpsUrl = pair.join("");
 
     return (
-      <Image
-        source={{ uri: httpsUrl }}
-        style={{ height: 300, width: "100%" }}
-      />
+      <>
+        <View style={styles.opacity} />
+        <Image
+          source={{ uri: httpsUrl }}
+          style={{ height: 300, width: "100%" }}
+        />
+      </>
     );
   };
 

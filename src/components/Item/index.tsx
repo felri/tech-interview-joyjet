@@ -12,7 +12,13 @@ interface Props {
 export const Item: React.FC<Props> = ({ item }) => (
   <View style={styles.container}>
     <SnapCarousel galery={item.galery} />
-    <Text>{item.title}</Text>
-    <Text>{item.description.split(".").shift()}</Text>
+    <TouchableOpacity style={styles.containerTextItem}>
+      <Text style={styles.textItem} fontWeight="bold">
+        {item.title}
+      </Text>
+      <Text style={styles.textDescription}>
+        {item.description.split(".").shift()}
+      </Text>
+    </TouchableOpacity>
   </View>
 );
