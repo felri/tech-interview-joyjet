@@ -8,6 +8,8 @@ import { StatusBar } from "react-native";
 import { HomeScreen } from "./src/screens/Home";
 import { ItemScreen } from "./src/screens/Item";
 import { FavoriteScreen } from "./src/screens/Favorite";
+import { useFonts } from "@use-expo/font";
+import { AppLoading } from "expo";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -27,15 +29,25 @@ const FavoriteStack = () => (
 );
 
 export default function App() {
-  return (
-    <SafeAreaProvider>
-      <StatusBar backgroundColor="#fafafa" barStyle="dark-content" />
-      <NavigationContainer>
-        <Drawer.Navigator initialRouteName="Home" drawerPosition="right">
-          <Drawer.Screen name="Home" component={HomeStack} />
-          <Drawer.Screen name="Favorites" component={FavoriteStack} />
-        </Drawer.Navigator>
-      </NavigationContainer>
-    </SafeAreaProvider>
-  );
+  let [fontsLoaded] = useFonts({
+    "Montserrat-Regular": require("./src/assets/fonts/Montserrat-Regular.ttf"),
+    "Montserrat-Light": require("./src/assets/fonts/Montserrat-Light.ttf"),
+    "Montserrat-Bold": require("./src/assets/fonts/Montserrat-Bold.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
+    return (
+      <SafeAreaProvider>
+        <StatusBar backgroundColor="#fafafa" barStyle="dark-content" />
+        <NavigationContainer>
+          <Drawer.Navigator initialRouteName="Home" drawerPosition="right">
+            <Drawer.Screen name="Home" component={HomeStack} />
+            <Drawer.Screen name="Favorites" component={FavoriteStack} />
+          </Drawer.Navigator>
+        </NavigationContainer>
+      </SafeAreaProvider>
+    );
+  }
 }
