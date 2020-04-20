@@ -6,7 +6,7 @@ Download Expo Client from:
 
 [Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=pt_BR)
 
-Click Scan QR Code:
+On iOS use your camera to read the QR Code below, on Android open the Expo app and click Scan QR Code:
 
 ![Image description](https://i.imgur.com/UhQPnRE.jpg)
 
