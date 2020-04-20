@@ -3,6 +3,9 @@ import { Image, TouchableOpacity, ScrollView, View } from "react-native";
 import styles from "./styles.js";
 import { SnapCarousel } from "src/components/SnapCarousel";
 import { Text } from "src/utils/Text";
+import { useDispatch, useSelector } from "react-redux";
+import actions from "src/redux/favorites/types";
+
 const favoriteBtn = require("src/assets/imgs/ic_star.png");
 const favoriteBtnSelected = require("src/assets/imgs/star.png");
 const backBtn = require("src/assets/imgs/ic_back.png");
@@ -17,7 +20,7 @@ interface IText {
 }
 interface IBtn {
   onPress?: Function;
-  favorite: boolean;
+  favorite?: boolean;
 }
 
 const Favorite: React.FC<IBtn> = ({ onPress, favorite }) => (
@@ -59,11 +62,32 @@ const Description: React.FC<IText> = ({ text }) => (
 
 export const ItemScreen: React.FC<Props> = ({ route, navigation }) => {
   const { item, category } = route.params;
+  const [favorite, setFavorite] = React.useState<boolean>(false);
 
-  console.log(item);
+  const favorites = useSelector((state) => state.favorites);
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    const result: number = favorites.list.findIndex(
+      (f) => f.item.title === item.title && f.category === category
+    );
+    console.log(result);
+    setFavorite(result !== -1);
+  }, [favorites]);
+
+  const handleFavorite = () => {
+    dispatch({
+      type: actions.TOOGLE_FAVORITE,
+      payload: {
+        item: item,
+        category: category,
+      },
+    });
+  };
+
   return (
     <ScrollView>
-      <Favorite favorite={true} />
+      <Favorite favorite={favorite} onPress={handleFavorite} />
       <Back onPress={() => navigation.pop()} />
       <SnapCarousel galery={item.galery} />
       <View style={styles.containerInfo}>

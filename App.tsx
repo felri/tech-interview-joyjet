@@ -1,5 +1,12 @@
 import React from "react";
 
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import reducers from "./src/redux/favorites";
+import { AsyncStorage } from "react-native";
+import { persistStore, persistReducer } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
+
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
@@ -10,6 +17,18 @@ import { ItemScreen } from "./src/screens/Item";
 import { FavoriteScreen } from "./src/screens/Favorite";
 import { useFonts } from "@use-expo/font";
 import { AppLoading } from "expo";
+import thunk from "redux-thunk";
+
+const persistConfig = {
+  key: "root",
+  storage: AsyncStorage,
+};
+
+const persistedReducer = persistReducer(persistConfig, reducers);
+
+const store = createStore(persistedReducer, applyMiddleware(thunk));
+
+let persistor = persistStore(store);
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -41,12 +60,16 @@ export default function App() {
     return (
       <SafeAreaProvider>
         <StatusBar backgroundColor="#fafafa" barStyle="dark-content" />
-        <NavigationContainer>
-          <Drawer.Navigator initialRouteName="Home" drawerPosition="right">
-            <Drawer.Screen name="Home" component={HomeStack} />
-            <Drawer.Screen name="Favorites" component={FavoriteStack} />
-          </Drawer.Navigator>
-        </NavigationContainer>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <NavigationContainer>
+              <Drawer.Navigator initialRouteName="Home" drawerPosition="right">
+                <Drawer.Screen name="Home" component={HomeStack} />
+                <Drawer.Screen name="Favorites" component={FavoriteStack} />
+              </Drawer.Navigator>
+            </NavigationContainer>
+          </PersistGate>
+        </Provider>
       </SafeAreaProvider>
     );
   }

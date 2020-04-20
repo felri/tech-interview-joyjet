@@ -3,12 +3,12 @@ import actions from 'src/redux/favorites/types';
 export default (state = { list: [] }, action) => {
   const newState = { ...state }
   switch (action.type) {
-    case actions.SET_FAVORITE:
-      newState.list.push(action.payload)
-      return newState
-    case actions.REMOVE_FAVORITE:
-      const newList = newState.list.splice(action.payload, 1)
-      newState.list = newList
+    case actions.TOOGLE_FAVORITE:
+      const index = newState.list.findIndex(
+        (f) => f.item.title === action.payload.item.title && f.category === action.payload.category
+      );
+      if (index !== -1) newState.list.splice(index, 1)
+      else newState.list.push(action.payload)
       return newState
     default:
       return state
