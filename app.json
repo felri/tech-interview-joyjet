@@ -1,26 +1,20 @@
 {
   "expo": {
-    "name": "tech-interview-joylet",
-    "slug": "tech-interview-joylet",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "name": "tech-interview-joyjet",
+    "slug": "tech-interview-joyjet",
+    "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./src/assets/imgs/ic_joyjet@3x.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./src/assets/imgs/ic_joyjet@3x.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#434343"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     }
