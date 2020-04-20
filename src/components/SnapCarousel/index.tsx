@@ -1,7 +1,10 @@
 import React from "react";
-import { Image, Dimensions, View } from "react-native";
+import { Image, Dimensions, View, TouchableOpacity } from "react-native";
 import styles from "./styles.js";
 import Carousel from "react-native-snap-carousel";
+
+const ArrowRightPng = require("src/assets/imgs/arrow_right.png");
+const ArrowLeftPng = require("src/assets/imgs/arrow_left.png");
 
 interface Props {
   galery: string[];
@@ -14,6 +17,18 @@ interface IItem {
 
 export const SnapCarousel: React.FC<Props> = ({ galery }) => {
   const carouselRef = React.useRef(null);
+
+  const onPrev = React.useCallback(() => {
+    if (carouselRef && carouselRef.current) {
+      carouselRef.current.snapToPrev();
+    }
+  }, [carouselRef]);
+
+  const onNext = React.useCallback(() => {
+    if (carouselRef && carouselRef.current) {
+      carouselRef.current.snapToNext();
+    }
+  }, [carouselRef]);
 
   const renderItem = (url: IItem) => {
     //<Image does not work well with http, so we need to change to https
@@ -34,6 +49,12 @@ export const SnapCarousel: React.FC<Props> = ({ galery }) => {
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity style={styles.containerLeftArrow} onPress={onPrev}>
+        <Image source={ArrowLeftPng} style={{ height: 50, width: 30 }} />
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.containerRightArrow} onPress={onNext}>
+        <Image source={ArrowRightPng} style={{ height: 50, width: 30 }} />
+      </TouchableOpacity>
       <Carousel
         loop={true}
         ref={carouselRef}
