@@ -7,24 +7,19 @@ import { SnapCarousel } from "src/components/SnapCarousel";
 
 interface Props {
   item: IItems;
-  navigation: any;
+  handleClick: Function;
 }
 
-export const Item: React.FC<Props> = ({ item, navigation }) => {
-  const handleClick = () => {
-    navigation.navigate("ItemScreen", { item: item });
-  };
-  return (
-    <View style={styles.container}>
-      <SnapCarousel galery={item.galery} />
-      <TouchableOpacity style={styles.containerTextItem} onPress={handleClick}>
-        <Text style={styles.textItem} fontWeight="bold">
-          {item.title}
-        </Text>
-        <Text style={styles.textDescription}>
-          {item.description.split(".").shift()}
-        </Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
+export const Item: React.FC<Props> = ({ item, handleClick }) => (
+  <View style={styles.container}>
+    <SnapCarousel galery={item.galery} />
+    <TouchableOpacity style={styles.containerTextItem} onPress={handleClick}>
+      <Text style={styles.textItem} fontWeight="bold">
+        {item.title}
+      </Text>
+      <Text style={styles.textDescription}>
+        {item.description.split(".").shift()}
+      </Text>
+    </TouchableOpacity>
+  </View>
+);
