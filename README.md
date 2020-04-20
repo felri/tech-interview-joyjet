@@ -36,7 +36,8 @@ yarn test
 ```
 
 Observations: 
-I've tested only on android because I don't have an iphone or macbook, but I tested in differents resolutions to see if everything was ok
+I've tested only on android because I don't have an iphone or macbook, but I tested in differents resolutions to see if everything was ok.
+
 Unit tests were done in the api and the reducer.
 
 
