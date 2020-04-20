@@ -4,18 +4,18 @@ import { Text as TextReactNative, TextStyle } from "react-native";
 interface Props {
   children: string;
   style?: TextStyle;
-  fontWeigth?: string;
+  fontWeight?: string;
 }
 
-export const Text: React.FC<Props> = ({ children, style, fontWeigth }) => (
+export const Text: React.FC<Props> = ({ children, style, fontWeight }) => (
   <TextReactNative
     style={[
       style,
       {
         fontFamily:
-          fontWeigth === "thin"
+          fontWeight === "thin"
             ? "Montserrat-Light"
-            : fontWeigth === "bold"
+            : fontWeight === "bold"
             ? "Montserrat-Bold"
             : "Montserrat-Regular",
       },

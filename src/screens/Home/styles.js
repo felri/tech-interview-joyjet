@@ -8,6 +8,6 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   containerScrollView: {
-    marginTop: 50
+    marginTop: 38
   }
 });

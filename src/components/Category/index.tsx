@@ -11,8 +11,11 @@ interface Props {
 
 export const Category: React.FC<Props> = ({ item }) => (
   <View style={styles.container}>
-    <View></View>
-
+    <View style={styles.containerTextCategory}>
+      <Text style={styles.textCategory} fontWeight="bold">
+        {item.category}
+      </Text>
+    </View>
     {item.items.length > 0 &&
       item.items.map((item: IItems, index: number) => (
         <Item key={index} item={item} />
