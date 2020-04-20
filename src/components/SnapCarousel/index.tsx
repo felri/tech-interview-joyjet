@@ -50,10 +50,10 @@ export const SnapCarousel: React.FC<Props> = ({ galery }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.containerLeftArrow} onPress={onPrev}>
-        <Image source={ArrowLeftPng} style={{ height: 50, width: 30 }} />
+        <Image source={ArrowLeftPng} style={{ height: 30, width: 15 }} />
       </TouchableOpacity>
       <TouchableOpacity style={styles.containerRightArrow} onPress={onNext}>
-        <Image source={ArrowRightPng} style={{ height: 50, width: 30 }} />
+        <Image source={ArrowRightPng} style={{ height: 30, width: 15 }} />
       </TouchableOpacity>
       <Carousel
         loop={true}

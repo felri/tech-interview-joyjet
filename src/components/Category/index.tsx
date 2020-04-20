@@ -7,9 +7,10 @@ import { Item } from "src/components/Item";
 
 interface Props {
   item: ICategory;
+  navigation: any;
 }
 
-export const Category: React.FC<Props> = ({ item }) => (
+export const Category: React.FC<Props> = ({ item, navigation }) => (
   <View style={styles.container}>
     <View style={styles.containerTextCategory}>
       <Text style={styles.textCategory} fontWeight="bold">
@@ -18,7 +19,7 @@ export const Category: React.FC<Props> = ({ item }) => (
     </View>
     {item.items.length > 0 &&
       item.items.map((item: IItems, index: number) => (
-        <Item key={index} item={item} />
+        <Item key={index} item={item} navigation={navigation} />
       ))}
   </View>
 );

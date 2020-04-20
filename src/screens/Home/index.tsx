@@ -40,7 +40,9 @@ export const HomeScreen: React.FC<Props> = ({ navigation }) => {
         {loading ? (
           <Loading />
         ) : items.length ? (
-          items.map((item, index) => <Category key={index} item={item} />)
+          items.map((item, index) => (
+            <Category key={index} item={item} navigation={navigation} />
+          ))
         ) : (
           <Error />
         )}

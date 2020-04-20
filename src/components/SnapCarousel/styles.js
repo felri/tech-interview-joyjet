@@ -11,7 +11,7 @@ export default StyleSheet.create({
     height: 300,
     position: 'absolute',
     backgroundColor: 'black',
-    opacity: 0.4,
+    opacity: 0.5,
   },
   containerLeftArrow: {
     position: 'absolute',
