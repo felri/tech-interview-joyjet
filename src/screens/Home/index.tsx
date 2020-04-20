@@ -6,20 +6,10 @@ import { getItems } from "src/utils/api";
 import { HeaderBar } from "src/components/HeaderBar";
 import { Category } from "src/components/Category";
 import { ScrollView } from "react-native-gesture-handler";
+import { ICategory } from "src/utils/interface";
 
 interface Props {
   navigation: object;
-}
-
-interface IItems {
-  title: string;
-  description: string;
-  galery: string[];
-}
-
-interface ICategory {
-  category: string;
-  list: IItems[];
 }
 
 const Loading: React.FC<{}> = () => <ActivityIndicator />;

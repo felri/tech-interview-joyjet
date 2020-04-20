@@ -2,17 +2,8 @@ import React from "react";
 import { Image, TouchableOpacity, View } from "react-native";
 import { Text } from "src/utils/Text";
 import styles from "./styles.js";
-
-interface IItems {
-  title: string;
-  description: string;
-  galery: string[];
-}
-
-interface ICategory {
-  category: string;
-  list: IItems[];
-}
+import { ICategory, IItems } from "src/utils/interface";
+import { Item } from "src/components/Item";
 
 interface Props {
   item: ICategory;
@@ -20,6 +11,11 @@ interface Props {
 
 export const Category: React.FC<Props> = ({ item }) => (
   <View style={styles.container}>
-    <Text>{item.category}</Text>
+    <View></View>
+
+    {item.items.length > 0 &&
+      item.items.map((item: IItems, index: number) => (
+        <Item key={index} item={item} />
+      ))}
   </View>
 );
